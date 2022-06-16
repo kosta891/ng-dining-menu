@@ -1,0 +1,57 @@
+<form
+  class="form-control"
+  [formGroup]="mealForm"
+  (ngSubmit)="submitForm(mealForm)"
+>
+  <div class="mt-3 mb-3">
+    <button
+      class="btn btn-success me-3"
+      type="submit"
+      [disabled]="!this.mealForm.valid"
+    >
+      Save
+    </button>
+    <button class="btn btn-warning me-3" (click)="back()">Cancel</button>
+  </div>
+  <div>
+    <label> <h6>ID</h6></label>
+    <input class="form-control" type="text" formControlName="idMeal" />
+  </div>
+  <div>
+    <label> <h6>name</h6></label>
+    <input class="form-control" type="text" formControlName="strMeal" />
+  </div>
+  <div>
+    <label> <h6>image path</h6></label>
+    <input class="form-control" type="text" formControlName="imgPath" />
+  </div>
+  <div>
+    <label> <h6>area</h6></label>
+    <input class="form-control" type="text" formControlName="strArea" />
+  </div>
+  <div>
+    <label> <h6>category</h6></label>
+    <input class="form-control" type="text" formControlName="strCategory" />
+  </div>
+  <div>
+    <label> <h6>ingredients</h6></label>
+    <textarea
+      class="form-control"
+      rows="5"
+      formControlName="strIngredient"
+    ></textarea>
+  </div>
+  <div>
+    <label> <h6>instructions</h6></label>
+    <textarea
+      class="form-control"
+      type="text"
+      rows="10"
+      formControlName="strInstructions"
+    ></textarea>
+  </div>
+  <div>
+    <label> <h6>link</h6></label>
+    <input class="form-control" type="text" formControlName="strYoutube" />
+  </div>
+</form>

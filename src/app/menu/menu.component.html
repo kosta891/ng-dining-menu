@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="col-lg-6 sm-12">
+    <div>
+      <span class="me-3">Change Menu to</span>
+      <button class="btn btn-secondary me-5" (click)="switchMenu()">
+        {{ toogleMenu ? "Categories" : "National Dishes" }}
+      </button>
+      <button class="btn btn-secondary me-2" routerLink="all-meals">
+        All Meals
+      </button>
+    </div>
+
+    <form [formGroup]="form" class="mt-3 mb-4">
+      Search
+      <input
+        name="term"
+        formControlName="term"
+        class="form-control"
+        type="text"
+      />
+    </form>
+
+    <div *ngIf="!toogleMenu">
+      <div *ngFor="let category of filteredCategories" class="list-group">
+        <button
+          [routerLink]="[category.strCategory]"
+          class="btn btn-secondary mt-1"
+        >
+          {{ category.strCategory }}
+        </button>
+      </div>
+    </div>
+    <div *ngIf="toogleMenu">
+      <div *ngFor="let area of filteredAreas" class="list-group">
+        <button [routerLink]="[area.strArea]" class="btn btn-secondary mt-1">
+          {{ area.strArea }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

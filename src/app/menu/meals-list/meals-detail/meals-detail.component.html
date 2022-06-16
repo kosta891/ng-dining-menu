@@ -1,0 +1,47 @@
+<div>
+  <div *ngFor="let meal of meal; let i = index">
+    <h1>{{ meal.strMeal }}</h1>
+    <h4>Id: {{ meal.idMeal }}</h4>
+    <h6>Area: {{ meal.strArea }}</h6>
+
+    <h6>Category: {{ meal.strCategory }}</h6>
+    <div class="mb-3">
+      <button routerLink="edit" class="btn btn-success me-3">edit</button>
+      <button (click)="deleteMeal(meal.idMeal)" class="btn btn-danger">
+        delete
+      </button>
+    </div>
+
+    <img
+      class="img-fluid rounded mb-2"
+      [src]="meal.strMealThumb"
+      [alt]="meal.strMeal"
+    />
+
+    <h4>Ingredients:</h4>
+    <ul *ngFor="let ingredient of ingredients">
+      <li>{{ ingredient }}</li>
+    </ul>
+    <h4>Instructions:</h4>
+    <p>{{ meal.strInstructions }}</p>
+    <p *ngIf="meal.strTags">Tags: {{ meal.strTags }}</p>
+
+    <h4>Links</h4>
+    <a
+      *ngIf="meal.strYoutube"
+      [href]="meal.strYoutube"
+      target="_blank"
+      rel="norefferer noopener"
+      class="link-success"
+      >YouTube</a
+    >
+    <a
+      *ngIf="meal.strSource"
+      [href]="meal.strSource"
+      target="_blank"
+      rel="norefferer noopener"
+      class="link-success"
+      >Source Text</a
+    >
+  </div>
+</div>
