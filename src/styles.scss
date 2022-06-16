@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100vh;
+}
+
+.container {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+a {
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+}

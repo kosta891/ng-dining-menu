@@ -1,0 +1,82 @@
+<div class="container">
+  <button class="btn btn-primary mb-1" (click)="newMeal()">Add New Meal</button>
+  <div *ngIf="isAllMeals">
+    <button
+      *ngFor="let letter of letters"
+      (click)="changeLetter(letter)"
+      class="btn btn-primary me-1"
+    >
+      {{ letter }}
+    </button>
+  </div>
+  <div class="row">
+    <div>
+      <h1>{{ name }}</h1>
+
+      <form [formGroup]="form" class="mt-3 mb-4 col-lg-5">
+        Search
+        <input
+          name="term"
+          formControlName="term"
+          type="text"
+          class="form-control"
+        />
+      </form>
+    </div>
+
+    <div class="col-lg-5" *ngIf="isAllMeals">
+      <div *ngIf="filteredAllMeals">
+        <ul class="list-group" *ngFor="let meal of filteredAllMeals">
+          <a class="link-success" [routerLink]="meal.idMeal">
+            <li class="list-group list-group-horizontal mt-2">
+              <span class="list-group-item"> {{ meal.idMeal }}</span>
+
+              <span class="list-group-item w-75">{{ meal.strMeal }}</span>
+              <img
+                class="rounded"
+                [src]="meal.strMealThumb"
+                [alt]="meal.strMeal"
+              />
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div *ngIf="!filteredAllMeals">No Meals were found!</div>
+    </div>
+
+    <div class="col-lg-5" *ngIf="!isAllMeals">
+      <ul class="list-group" *ngFor="let meal of filteredCategories">
+        <a class="link-success" [routerLink]="meal.idMeal">
+          <li class="list-group list-group-horizontal mt-2">
+            <span class="list-group-item"> {{ meal.idMeal }}</span>
+
+            <span class="list-group-item w-75">{{ meal.strMeal }}</span>
+            <img
+              class="rounded"
+              [src]="meal.strMealThumb"
+              [alt]="meal.strMeal"
+            />
+          </li>
+        </a>
+      </ul>
+      <ul class="list-group" *ngFor="let meal of filteredAreas">
+        <a class="link-success" [routerLink]="meal.idMeal">
+          <li class="list-group list-group-horizontal mt-2">
+            <span class="list-group-item"> {{ meal.idMeal }}</span>
+
+            <span class="list-group-item w-75">{{ meal.strMeal }}</span>
+            <img
+              class="rounded"
+              [src]="meal.strMealThumb"
+              [alt]="meal.strMeal"
+            />
+          </li>
+        </a>
+      </ul>
+    </div>
+
+    <div class="col-lg-7">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
